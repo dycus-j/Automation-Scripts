@@ -1,11 +1,11 @@
 import subprocess
 import ipaddress
+import sys
 import time
 
 """
 FUNCTIONS
 """
-
 def process_ping_result(host, output):
     """
     Processes the result of a ping command and prints the host's status.
@@ -28,11 +28,26 @@ def process_ping_result(host, output):
 """
 MAIN SCRIPT
 """
+#checks user provided network address argument
+if len(sys.argv) < 2:
+    print('Error: Please provide a network address and the prefix as an arguement.')
+    print('Usage: python3 network_scanner.py 192.168.5.0/24')
+    sys.exit(1)
 
+#stores network address argument as net_addr variable
+net_addr = sys.argv[1]
 
-net_addr = '192.168.64.0/24'
-ip_net = ipaddress.ip_network(net_addr)
+#try to create a network object, exit if the address is invalid
+try:
+    ip_net=ipaddress.ip_network(net_addr)
+except ValueError:
+    print(f"Error: '{net_addr}' is not a valid network address.")
+    sys.exit[1]
+    
+
 net_hosts = list(ip_net.hosts())
+
+print(f'\nScanning devices in {net_addr}...')
 
 start_time = time.time()
 
@@ -45,7 +60,6 @@ for host in net_hosts:
     process_ping_result(host,output)
     
 end_time = time.time()
-
 duration = end_time - start_time 
 
 print('\nScan complete.')
