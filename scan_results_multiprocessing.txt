@@ -1,0 +1,9 @@
+
+Scanning 254 devices in 192.168.64.0/24...
+
+--- Online Hosts ---
+✓ - 192.168.64.1 is ONLINE
+✓ - 192.168.64.3 is ONLINE
+
+Scan complete.
+The scan took 32.62 seconds to complete.
