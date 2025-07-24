@@ -20,7 +20,7 @@ A command-line tool that uses Python to perform a high-speed, parallel ping swee
 3.  Follow the structure of the provided example below.
 
     ```
-    python3 network_scanner.py 192.168.64.0/24
+    python3 network_scanner.py 192.168.64.0/24 (change the IP address to the network address that you want to scan)
     ```
 
 ## Version History
