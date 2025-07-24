@@ -17,10 +17,10 @@ A command-line tool that uses Python to perform a high-speed, parallel ping swee
 ## How to Use
 1.  Ensure you have Python 3 installed.
 2.  Run the script from the command line, providing the network address you wish to scan as an argument.
-3.  Follow the structure of the provided example below.
+3.  Follow the structure of the provided example below, but replace the example network address with the one you want to scan
 
     ```
-    python3 network_scanner.py 192.168.64.0/24 (change the IP address to the network address that you want to scan)
+    python3 network_scanner.py 192.168.64.0/24
     ```
 
 ## Version History
