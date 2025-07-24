@@ -1,5 +1,3 @@
-# === IMPORTS: Our Toolbox ===
-# We start by importing all the necessary libraries for our script.
 import subprocess
 import ipaddress
 import sys
@@ -31,16 +29,13 @@ def ping_worker(host):
         # If the ping fails, we catch the error and know the host is offline.
         return (host, False)
 
-# === THE MAIN CONTROLLER: Our "Toolbox" ===
-# We use a class to organize all our logic into a clean, reusable "scanner" object.
+# === THE MAIN CONTROLLER ===
+# Used a class to organize all the logic into a reusable "scanner" object.
 class NetworkScanner:
-    """A class to represent our network scanner tool."""
 
     def __init__(self, net_addr):
-        """
-        This constructor runs automatically when we create a new NetworkScanner object.
-        Its job is to validate the user's input and set up our initial variables.
-        """
+        # This constructor runs automatically when we create a new NetworkScanner object.
+        # Its job is to validate the user's input and set up our initial variables.
         try:
             self.ip_net = ipaddress.ip_network(net_addr)
             self.net_hosts = list(self.ip_net.hosts())
@@ -49,10 +44,8 @@ class NetworkScanner:
             sys.exit(1)
             
     def scan(self):
-        """
-        This is the main public method. It orchestrates the entire scan, 
-        from starting the timer to printing the results.
-        """
+        # This is the main public method. It orchestrates the entire scan, 
+        # from starting the timer to printing the results.
         print(f'\nScanning {len(self.net_hosts)} devices in {self.ip_net.with_prefixlen}...')
         start_time = time.time()
         
@@ -70,7 +63,7 @@ class NetworkScanner:
         self._print_results(online_hosts, duration)
 
     def _print_results(self, online_hosts, duration):
-        """Prints a formatted summary of the scan results."""
+        # Prints a formatted summary of the scan results
         print("\n--- Online Hosts ---")
         if online_hosts:
             for host in online_hosts:
